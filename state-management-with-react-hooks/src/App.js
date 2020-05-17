@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import PrivateRoute from './PrivateRoute';
-import Home from "./pages/Home";
+import Home from "./pages/home/Home";
 import Admin from "./pages/admin/Admin";
 import Login from "./pages/Login";
 import Signup from './pages/Signup';
@@ -17,11 +17,8 @@ function App(props) {
       <Router>
         <div>
           <AuthContext.Consumer>
-            {({ state }) => {
-              var name = "";
-              if (state.authTokens && state.authTokens.name) {
-                name = state.authTokens.name
-              }
+            {({ name }) => {
+              console.log("repinto name")
               return (
                 <Menubar userName={name} />
               )

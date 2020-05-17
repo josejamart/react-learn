@@ -1,36 +1,47 @@
-import React from "react";
-import { createContext, useReducer } from 'react';
+import React, { useState } from "react";
+import { createContext } from 'react';
 
 export const AuthContext = createContext();
 
-const initState = {
-  authTokens: null
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "ev":
-      state.authTokens = action.payload
-      return Object.assign({}, state)
-    case "LOGIN_SUCCESS":
-      localStorage.setItem("tokens", JSON.stringify(action.payload));
-      state.authTokens = action.payload
-      return Object.assign({}, state)
-    case "LOGOUT":
-      localStorage.removeItem("tokens");
-      state.authTokens = null
-      return Object.assign({}, state)
-    default:
-      return state;
-  }
-};
-
-
-
 // Create a provider for components to consume and subscribe to changes
 export const AuthContextProvider = props => {
-  initState.authTokens = props.currentToken;
-  const [state, dispatch] = useReducer(reducer, initState);
+  var initAuthToken = null;
+  var initName, initEmail = '';
 
-  return <AuthContext.Provider value={{ state, dispatch }}>{props.children}</AuthContext.Provider>;
+  if (props.currentToken) {
+    initAuthToken = props.currentToken;
+    initName = props.currentToken.name;
+    initEmail = props.currentToken.email;
+  }
+
+  const [authToken, setAuthToken] = useState(initAuthToken);
+  const [name, setName] = useState(initName);
+  const [email, setEmail] = useState(initEmail);
+
+
+
+  return <AuthContext.Provider value={
+    {
+      authToken,
+      name,
+      email,
+      login: (data) => {
+        localStorage.setItem("tokens", JSON.stringify(data));
+        setAuthToken(data)
+        setName(data.name);
+        setEmail(data.email);
+      },
+      logout: () => {
+        localStorage.removeItem("tokens");
+        setAuthToken('');
+        setName('');
+        setEmail('');
+      },
+      setName: (name) => {
+        setName(name);
+      },
+      setMail: (mail) => {
+        setEmail(mail);
+      }
+    }}> {props.children}</AuthContext.Provider >;
 };

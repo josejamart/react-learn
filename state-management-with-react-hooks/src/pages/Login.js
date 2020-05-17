@@ -8,16 +8,13 @@ function Login() {
   const [isError, setIsError] = useState(false);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const {dispatch} = useContext(AuthContext);
+  const { login: authLogin } = useContext(AuthContext);
 
   async function postLogin() {
     try {
       const result = await login(userName, password)
       if (result.status === 200) {
-        dispatch({
-          type: "LOGIN_SUCCESS",
-          payload: result.data,
-        });
+        authLogin(result.data)
         setLoggedIn(true);
       } else {
         setIsError(true);

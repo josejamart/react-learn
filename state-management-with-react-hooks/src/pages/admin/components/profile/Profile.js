@@ -3,8 +3,8 @@ import { setProfile } from "../../../../api/user"
 
 function Profile(props) {
 
-    const [userName, setUserName] = useState(props.authTokens.name);
-    const [email, setEmail] = useState(props.authTokens.email);
+    const [userName, setUserName] = useState(props.name);
+    const [email, setEmail] = useState(props.email);
     const [isError, setIsError] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
 
