@@ -8,7 +8,7 @@ function Login() {
   const [isError, setIsError] = useState(false);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const {dispatch} = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
 
   async function postLogin() {
     try {
@@ -33,14 +33,14 @@ function Login() {
 
   return (
     <div>
-      <div>
+      <div className="input-field">
         <input
-          type="username"
+          type="text"
           value={userName}
           onChange={e => {
             setUserName(e.target.value);
           }}
-          placeholder="email"
+          placeholder="User name"
         />
         <input
           type="password"
