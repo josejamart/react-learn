@@ -32,8 +32,6 @@ const reducer = (state, action) => {
   }
 };
 
-
-
 // Create a provider for components to consume and subscribe to changes
 export const AuthContextProvider = props => {
   initState.authTokens = props.currentToken;
