@@ -17,6 +17,7 @@
   "devDependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "react-test-renderer": "^16.13.1",
     "rest-mock-middleware": "git+https://github.com/GFI-Informatique/rest-mock-middleware.git"
   },
   "scripts": {

@@ -3,13 +3,13 @@ import { createContext, useReducer } from 'react';
 
 export const AuthContext = createContext();
 
-const initState = {
+export const initState = {
   authTokens: null,
   name: null,
   email: null,
 };
 
-const reducer = (state, action) => {
+export const reducer = (state, action) => {
   switch (action.type) {
     case "LOGIN_SUCCESS":
       localStorage.setItem("tokens", JSON.stringify(action.payload));
