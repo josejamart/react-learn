@@ -1,7 +1,6 @@
 import { reducer, initState } from "../auth";
 
 describe('Auth reducer', () => {
-
     it('State with type useless', () => {
         const action = {
             type: "useless-type",
@@ -34,5 +33,21 @@ describe('Auth reducer', () => {
         expect(newState).toStrictEqual(expectedState);
     });
 
+    it('State with type useless', () => {
+        const action = {
+            type: "LOGOUT"
+        };
 
+        const oldState = {
+            authTokens: {
+                name: "Jim",
+                email: "jim@mail.com"
+            },
+            name: "Jim",
+            email: "jim@mail.com",
+        }
+
+        const newState = reducer(oldState, action);
+        expect(newState).toStrictEqual(initState);
+    });
 })

@@ -33,37 +33,3 @@ exports[`Menubar -> Component Match snapshot 1`] = `
   </div>
 </nav>
 `;
-
-exports[`Menubar -> Component Match snapshot 2`] = `
-<nav>
-  <div
-    className="nav-wrapper"
-  >
-    <span
-      className="band-logo right"
-    >
-      User name
-    </span>
-    <ul
-      className="left"
-    >
-      <li>
-        <a
-          href="/"
-          onClick={[Function]}
-        >
-          Home Page
-        </a>
-      </li>
-      <li>
-        <a
-          href="/admin"
-          onClick={[Function]}
-        >
-          Admin Page
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
-`;
