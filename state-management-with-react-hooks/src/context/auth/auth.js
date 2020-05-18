@@ -4,22 +4,29 @@ import { createContext, useReducer } from 'react';
 export const AuthContext = createContext();
 
 const initState = {
-  authTokens: null
+  authTokens: null,
+  name: null,
+  email: null,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "ev":
-      state.authTokens = action.payload
-      return Object.assign({}, state)
     case "LOGIN_SUCCESS":
       localStorage.setItem("tokens", JSON.stringify(action.payload));
-      state.authTokens = action.payload
-      return Object.assign({}, state)
+      return {
+        ...state,
+        authTokens: action.payload,
+        name: action.payload.name,
+        email: action.payload.email
+      }
     case "LOGOUT":
       localStorage.removeItem("tokens");
-      state.authTokens = null
-      return Object.assign({}, state)
+      return {
+        ...state,
+        authTokens: null,
+        name: null,
+        email: null
+      }
     default:
       return state;
   }

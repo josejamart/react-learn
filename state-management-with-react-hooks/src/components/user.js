@@ -1,7 +1,7 @@
 import React from "react";
 
 function user(props) {
-    return (<span className="User">
+    return (<span className="band-logo right">
         {props.userName}
     </span>);
 }

@@ -1,0 +1,13 @@
+{
+   "request": {
+      "method": "GET",
+      "url": "/todo"
+   },
+   "response": {
+      "status": 200,
+      "headers": {
+         "Content-Type": "application/json"
+      },
+      "bodyFileName": "GET-todo-list.json"
+   }
+}
