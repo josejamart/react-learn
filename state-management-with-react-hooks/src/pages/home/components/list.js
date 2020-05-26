@@ -11,8 +11,8 @@ function List(props) {
     }, [newTask, props]);
 
     const newInput = useMemo(() => (<div className="row valign-wrapper">
-        <input className="col s10" type="text" value={newTask} placeholder="Add new task" onChange={(event) => setNewTask(event.target.value)} />
-        <button className="col s2" onClick={handleAdd} disabled={newTask === ""}>Add task</button>
+        <input data-testid="list-input" className="col s10" type="text" value={newTask} placeholder="Add new task" onChange={(event) => setNewTask(event.target.value)} />
+        <button data-testid="list-button" className="col s2" onClick={handleAdd} disabled={newTask === ""}>Add task</button>
     </div>), [newTask, handleAdd]);
 
     const elements = useMemo(() => {
